@@ -7,7 +7,7 @@
   <title>@yield ('titulo', 'AGROVALLE HONDURAS')</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="{{asset ('Spark/assets/images/favicon.ico') }}">
+  <link rel="icon" type="image/png" href="{{asset ('spark/assets/images/favicon.ico') }}">
 
   <!-- Local Third-Party Libraries (100% Offline Compatible) -->
   <link rel="stylesheet" href="{{asset ('spark/assets/libs/bootstrap/css/bootstrap.min.css') }}">
@@ -27,7 +27,7 @@
          ========================================== -->
   <div class="sidebar-wrapper" id="sidebar">
     <!-- Brand Logo / Identity -->
-    <a href="index.html" class="sidebar-brand">
+    <a href="{{ route ('dashboard') }}" class="sidebar-brand">
       <i class="bi bi-asterisk"></i>
       <span>Agrovalle</span>
     </a>
@@ -39,21 +39,22 @@
         <div class="sidebar-menu-title">Menu</div>
         <ul class="sidebar-menu-list">
           <li class="sidebar-menu-item">
-            <a href="{{ url('/index') }}" class="sidebar-menu-link" id="menu-overview" title="Overview">
+            <a href="{{ route ('dashboar') }}" class="sidebar-menu-link" id="menu-overview" title="Overview"
+              class="sidebar-menu-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
               <i class="bi bi-grid-fill"></i>
               <span>Inicio</span>
             </a>
           </li>
           <li class="sidebar-menu-item">
-            <a href="{{ url('/insumos') }}" class="sidebar-menu-link" id="menu-overview" title="Overview">
+            <a href="{{ route ('insumos.index') }}" class="sidebar-menu-link" id="menu-overview" title="Overview">
               <i class="bi bi-grid-fill"></i>
               <span>Insumos agropecuarios e inventario</span>
             </a>
           </li>
           <li class="sidebar-menu-item">
-            <a href="{{ url('/proveedores') }}" class="sidebar-menu-link" id="menu-overview" title="Overview">
+            <a href="{{ route ('proveedores.index') }}" class="sidebar-menu-link" id="menu-overview" title="Overview">
               <i class="bi bi-grid-fill"></i>
-              <span>Fabricantes y proveedores agricolas</span>
+              <span>Recursos Humanos</span>
             </a>
           </li>
         </ul>
@@ -74,11 +75,10 @@
 
     <!-- Sidebar Profile Card (Dynamic Footer) -->
     <div class="sidebar-profile">
-      <img src="asset {{ ('assets/images/avatar.png') }}" alt="Administrator" class="sidebar-profile-img"
-        onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop'">
+      <img src="{{ asset ('spark/assets/images/avatar.png') }}" alt="Usuario" class="sidebar-profile-img"
       <div class="sidebar-profile-info">
-        <div class="sidebar-profile-name">Administrator</div>
-        <div class="sidebar-profile-email">admin@email.com</div>
+        <div class="sidebar-profile-name"></div>
+        <div class="sidebar-profile-email"></div>         
       </div>
     </div>
   </div>
@@ -172,12 +172,12 @@
          ========================================== -->
 
   <!-- Local Third-Party Libraries Script dependencies -->
-  <script src="{{ asset ('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset ('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-  <script src="{{ asset ('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
+  <script src="{{ asset ('spark/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset ('spark/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+  <script src="{{ asset ('spark/assets/libs/flatpickr/flatpickr.min.js') }}"></script>
 
   <!-- Local dashboard interactions controller -->
-  <script src=" {{asset ('assets/js/dashboard.js') }}"></script>
+  <script src=" {{asset ('spark/assets/js/dashboard.js') }}"></script>
 </body>
 
 </html>

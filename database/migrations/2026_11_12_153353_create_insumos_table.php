@@ -21,7 +21,9 @@ return new class extends Migration
             $table->integer('inventario');
             $table->string ('imagen')->nullable();
             $table->string('fabricante');
-            //faltan 3 campos
+            $table->date('fecha_vencimiento');
+            $table->date('fecha_registro');
+            $table->string('numero_lote');
             $table->timestamps();
         });
     }
