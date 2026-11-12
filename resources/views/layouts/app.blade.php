@@ -29,7 +29,7 @@
     <!-- Brand Logo / Identity -->
     <a href="{{ route ('dashboard') }}" class="sidebar-brand">
       <i class="bi bi-asterisk"></i>
-      <span>Agrovalle</span>
+      <span>Agrovalle Honduras</span>
     </a>
 
     <!-- Navigation Menu -->
@@ -39,20 +39,20 @@
         <div class="sidebar-menu-title">Menu</div>
         <ul class="sidebar-menu-list">
           <li class="sidebar-menu-item">
-            <a href="{{ route ('dashboar') }}" class="sidebar-menu-link" id="menu-overview" title="Overview"
+            <a href="{{ route ('dashboard') }}" class="sidebar-menu-link" id="menu-overview" title="Overview"
               class="sidebar-menu-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
               <i class="bi bi-grid-fill"></i>
               <span>Inicio</span>
             </a>
           </li>
           <li class="sidebar-menu-item">
-            <a href="{{ route ('insumos.index') }}" class="sidebar-menu-link" id="menu-overview" title="Overview">
+            <a href="{{ route ('insumos') }}" class="sidebar-menu-link" id="menu-overview" title="Overview">
               <i class="bi bi-grid-fill"></i>
               <span>Insumos agropecuarios e inventario</span>
             </a>
           </li>
           <li class="sidebar-menu-item">
-            <a href="{{ route ('proveedores.index') }}" class="sidebar-menu-link" id="menu-overview" title="Overview">
+            <a href="{{ route ('proveedores') }}" class="sidebar-menu-link" id="menu-overview" title="Overview">
               <i class="bi bi-grid-fill"></i>
               <span>Recursos Humanos</span>
             </a>
@@ -62,12 +62,12 @@
 
       <!-- Group: Pages -->
       <div class="sidebar-menu-section">
-        <div class="sidebar-menu-title">Pages</div>
+        <div class="sidebar-menu-title">Paginas</div>
         <ul class="sidebar-menu-list">
           <li class="sidebar-menu-item">
-            <a href="page-login.html" class="sidebar-menu-link" id="menu-loginpage" title="Login Page">
+            <a href="#" class="sidebar-menu-link" id="menu-logout" title="Login Page">
               <i class="bi bi-box-arrow-in-right"></i>
-              <span>Login Screen</span>
+              <span>Logout</span>
             </a>
         </ul>
       </div>
@@ -75,10 +75,14 @@
 
     <!-- Sidebar Profile Card (Dynamic Footer) -->
     <div class="sidebar-profile">
-      <img src="{{ asset ('spark/assets/images/avatar.png') }}" alt="Usuario" class="sidebar-profile-img"
+      <img src="{{ asset ('spark/assets/images/avatar.png') }}" alt="Usuario" class="sidebar-profile-img">
       <div class="sidebar-profile-info">
-        <div class="sidebar-profile-name"></div>
-        <div class="sidebar-profile-email"></div>         
+        <div class="sidebar-profile-name">
+        </div>
+        <div class="small">Conectado como:</div>
+        <div class="sidebar-profile-email">
+            {{ Auth::check() ? Auth::user()->email : 'No autenticadoS' }}
+        </div>    
       </div>
     </div>
   </div>
@@ -112,22 +116,23 @@
         <div class="dropdown ms-2">
           <button class="navbar-profile-btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
             aria-expanded="false" id="profile-dropdown">
-            <span class="navbar-profile-name d-none d-md-inline">Administrator</span>
+            <span class="navbar-profile-name d-none d-md-inline">{{ Auth::check() ? Auth::user()->name : 'Administrador' }}</span>
             <i class="bi bi-chevron-down navbar-profile-caret"></i>
           </button>
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-profile" aria-labelledby="profile-dropdown">
             <li class="dropdown-header">Welcome !</li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> My Account</a></li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Settings</a></li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-lock"></i> Lock Screen</a></li>
-            <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item text-danger" href="page-login.html"><i class="bi bi-box-arrow-right"></i>
-                Logout</a></li>
-          </ul>
-        </div>
-      </div>
+            <li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+      </form>
+      <a class="dropdown-item text-danger" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        <i class="bi bi-box-arrow-right"></i> Logout
+      </a>
+    </li>
+  </ul>
+</div>
     </header>
     <!-- END: Top Navbar Component -->
 
@@ -138,7 +143,7 @@
       </div>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
-          <li class="breadcrumb-item"><a href="{{ url ('/index') }}" class="text-decoration-none text-muted-green">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{ url ('dashboard') }}" class="text-decoration-none text-muted-green">Home</a></li>
         </ol>
       </nav>
     </div>
@@ -148,19 +153,18 @@
     <footer class="footer-custom">
       <div class="footer-left">
         <span class="footer-logo">
-          <i class="bi bi-asterisk"></i> BiblioAdmin
+          <i class="bi bi-flower1"></i> Agrovalle Honduras
         </span>
         <span class="footer-separator">|</span>
-        <span class="footer-copy">&copy; 2026 Made with <i class="bi bi-heart-fill text-danger footer-heart"></i> by<a
-            href="https://sparkadminpro.gumroad.com/" target="_blank">Natalia Izaguirre </a>• Distributed by <a
-            href="https://www.themewagon.com/" target="_blank">ThemeWagon</a> </span>
+        <span class="footer-copy">&copy; 2026 Desarrollado con<i class="bi bi-heart-fill text-danger footer-heart"></i> por<a
+            href="#" target="_blank">Natalia Izaguirre </a>• Soluciones Agropecuarias<a
+
       </div>
       <div class="footer-right">
         <ul class="footer-links">
-          <li><a href="#" class="footer-link">Overview</a></li>
-          <li><a href="#" class="footer-link">Statistics</a></li>
-          <li><a href="#" class="footer-link">Help & Documentation</a></li>
-          <li><a href="#" class="footer-link">Status <span class="status-dot"></span></a></li>
+          <li><a href="{{ route('dashboard') }}" class="footer-link">Inicio</a></li>
+          <li><a href="{{ route('insumos') }}" class="footer-link">Insumos</a></li>
+          <li><a href="{{ route('proveedores') }}" class="footer-link">RRHH</a></li>
         </ul>
       </div>
     </footer>
