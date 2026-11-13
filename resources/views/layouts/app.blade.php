@@ -46,13 +46,19 @@
             </a>
           </li>
           <li class="sidebar-menu-item">
-            <a href="{{ route ('insumos') }}" class="sidebar-menu-link" id="menu-overview" title="Overview">
+            <a href="{{ route ('insumos.index') }}" class="sidebar-menu-link" id="menu-overview" title="Overview">
               <i class="bi bi-grid-fill"></i>
               <span>Insumos agropecuarios e inventario</span>
             </a>
           </li>
           <li class="sidebar-menu-item">
-            <a href="{{ route ('proveedores') }}" class="sidebar-menu-link" id="menu-overview" title="Overview">
+            <a href="{{ route ('proveedores.index') }}" class="sidebar-menu-link" id="menu-overview" title="Overview">
+              <i class="bi bi-grid-fill"></i>
+              <span>Proveedores</span>
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="{{ route ('recursoshumanos') }}" class="sidebar-menu-link" id="menu-overview" title="Overview">
               <i class="bi bi-grid-fill"></i>
               <span>Recursos Humanos</span>
             </a>
@@ -139,7 +145,7 @@
     <!-- START: Page Header Banner -->
     <div class="page-header">
       <div>
-        <h1 class="page-title">BIENVENIDOS A AGROVALLE HONDURAS</h1>
+        
       </div>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
@@ -148,7 +154,9 @@
       </nav>
     </div>
     <!-- END: Page Header Banner -->
-
+    <div class="container-fluid px-0">
+      @yield('content')
+    </div>
     <!-- START: Footer Component -->
     <footer class="footer-custom">
       <div class="footer-left">
@@ -163,8 +171,9 @@
       <div class="footer-right">
         <ul class="footer-links">
           <li><a href="{{ route('dashboard') }}" class="footer-link">Inicio</a></li>
-          <li><a href="{{ route('insumos') }}" class="footer-link">Insumos</a></li>
-          <li><a href="{{ route('proveedores') }}" class="footer-link">RRHH</a></li>
+          <li><a href="{{ route('insumos.index') }}" class="footer-link">Insumos</a></li>
+          <li><a href="{{ route('recursoshumanos') }}" class="footer-link">RRHH</a></li>
+          <li><a href="{{ route('proveedores.index') }}" class="footer-link">Proveedores</a></li>
         </ul>
       </div>
     </footer>

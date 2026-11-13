@@ -87,22 +87,6 @@
     </button>
     </form>
             
-            <!-- Divider -->
-            <div class="login-divider">Or sign in with</div>
-            
-            <!-- Social Logins -->
-            <div class="social-login-grid">
-                <button class="btn-social" type="button" id="btn-google">
-                    <i class="bi bi-google text-danger"></i>
-                    <span>Google</span>
-                </button>
-            </div>
-            
-            <!-- Footer Link -->
-            <p class="login-footer-text">
-                Don't have an account? <a href="#" id="link-register">Register Now</a>
-            </p>
-            
         </div>
     </div>
     <!-- END: Authentication Container -->

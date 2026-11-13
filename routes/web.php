@@ -1,6 +1,8 @@
 <?php
+use App\Http\Controllers\InsumoController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProveedorController;
 
 Route::get('/', function () {
     return view('layouts.app');
@@ -10,16 +12,21 @@ Route::get('/dashboard', function () {
     return view('layouts.app');
 })->middleware('auth')->name('dashboard');
 
-Route::get('insumos', function () {
-    return view('insumos.index');
-})->name('insumos');
+Route::middleware(['auth'])->group(function () {
+    Route::resource('insumos', InsumoController::class);
+});
 
-Route::get('proveedores', function () {
-    return view('proveedores.index');
-})->name('proveedores');
+Route::middleware(['auth'])->group(function () {
+    Route::resource('proveedores', ProveedorController::class)->parameters([
+    'proveedores' => 'proveedor'
+    ]);
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('recursoshumanos', EmpleadoController::class);
+});
 
 
-// Si manejas el cierre de sesión mediante un controlador:
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     // RUTAS PÚBLICAS (Solo invitados: guest) 
