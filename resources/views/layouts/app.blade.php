@@ -71,10 +71,12 @@
         <div class="sidebar-menu-title">Paginas</div>
         <ul class="sidebar-menu-list">
           <li class="sidebar-menu-item">
-            <a href="#" class="sidebar-menu-link" id="menu-logout" title="Login Page">
+            <a href="#" class="sidebar-menu-link" id="menu-logout" title="Cerrar sesión"
+              onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               <i class="bi bi-box-arrow-in-right"></i>
               <span>Logout</span>
             </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -146,7 +148,6 @@
         <i class="bi bi-house-door-fill"></i>
         <span>Home</span>
       </a>
-    </header>
     </header>
     <!-- END: Top Navbar Component -->
 

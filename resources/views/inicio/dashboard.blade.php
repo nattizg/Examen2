@@ -45,13 +45,14 @@
 <div class="row g-4">
 
   <!-- Insumos -->
-  <div class="col-12 col-md-6 col-xl-4">
+  <div class="col-12 col-md-6 col-xl-3">
     <div class="card card-stat h-100">
       <div class="d-flex align-items-center justify-content-center rounded-circle mb-3"
            style="width: 56px; height: 56px; background-color: var(--sys-green-bg); color: var(--sys-green); font-size: 1.6rem;">
         <i class="bi bi-box-seam"></i>
       </div>
-      <h5 class="card-title mb-2">Insumos en catálogo</h5>
+      <h5 class="card-title mb-2">Total de Insumos en Catálogo</h5>
+      <div class="stat-value text-break mb-2" style="font-size: 1.75rem;">{{ number_format($totalInsumos) }}</div>
       <p class="stat-label mb-4">
         Fertilizantes, semillas certificadas, agroquímicos, herramientas y sistemas de riego,
         con su inventario, lotes, precios y fechas de vencimiento.
@@ -63,13 +64,14 @@
   </div>
 
   <!-- Proveedores -->
-  <div class="col-12 col-md-6 col-xl-4">
+  <div class="col-12 col-md-6 col-xl-3">
     <div class="card card-stat h-100">
       <div class="d-flex align-items-center justify-content-center rounded-circle mb-3"
            style="width: 56px; height: 56px; background-color: var(--sys-orange-bg); color: var(--sys-orange); font-size: 1.6rem;">
         <i class="bi bi-truck"></i>
       </div>
-      <h5 class="card-title mb-2">Proveedores en catálogo</h5>
+      <h5 class="card-title mb-2">Total de Proveedores Activos</h5>
+      <div class="stat-value text-break mb-2" style="font-size: 1.75rem;">{{ number_format($proveedoresActivos) }}</div>
       <p class="stat-label mb-4">
         Fabricantes e importadores agrícolas de químicos, semilleros y maquinaria, con sus
         condiciones de crédito, contacto y estado comercial.
@@ -81,19 +83,38 @@
   </div>
 
   <!-- Empleados -->
-  <div class="col-12 col-md-6 col-xl-4">
+  <div class="col-12 col-md-6 col-xl-3">
     <div class="card card-stat h-100">
       <div class="d-flex align-items-center justify-content-center rounded-circle mb-3"
            style="width: 56px; height: 56px; background-color: var(--brand-lime-translucent); color: var(--brand-forest-light); font-size: 1.6rem;">
         <i class="bi bi-people"></i>
       </div>
-      <h5 class="card-title mb-2">Empleados en catálogo</h5>
+      <h5 class="card-title mb-2">Total de Empleados en Nómina</h5>
+      <div class="stat-value text-break mb-2" style="font-size: 1.75rem;">{{ number_format($totalEmpleados) }}</div>
       <p class="stat-label mb-4">
         Personal técnico y administrativo: ingenieros agrónomos, asesores de campo, bodega,
         maquinaria y caja, con su cargo, salario y fecha de ingreso.
       </p>
       <a href="{{ route('recursoshumanos.index') }}" class="btn btn-success mt-auto d-inline-flex align-items-center justify-content-center gap-2">
         <span>Ver empleados</span> <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Valor Total del Inventario -->
+  <div class="col-12 col-md-6 col-xl-3">
+    <div class="card card-stat h-100">
+      <div class="d-flex align-items-center justify-content-center rounded-circle mb-3"
+           style="width: 56px; height: 56px; background-color: #E0F2FE; color: #0284C7; font-size: 1.6rem;">
+        <i class="bi bi-cash-stack"></i>
+      </div>
+      <h5 class="card-title mb-2">Valor Total del Inventario</h5>
+      <div class="stat-value text-break mb-2" style="font-size: 1.75rem;">L. {{ number_format($valorInventario, 2, '.', ',') }}</div>
+      <p class="stat-label mb-4">
+        Suma de existencias × precio de venta de todos los insumos del catálogo.
+      </p>
+      <a href="{{ route('insumos.index') }}" class="btn btn-success mt-auto d-inline-flex align-items-center justify-content-center gap-2">
+        <span>Ver inventario</span> <i class="bi bi-arrow-right"></i>
       </a>
     </div>
   </div>
