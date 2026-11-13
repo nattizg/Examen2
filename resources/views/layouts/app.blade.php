@@ -58,7 +58,7 @@
             </a>
           </li>
           <li class="sidebar-menu-item">
-            <a href="{{ route ('recursoshumanos') }}" class="sidebar-menu-link" id="menu-overview" title="Overview">
+            <a href="{{ route ('recursoshumanos.index') }}" class="sidebar-menu-link" id="menu-overview" title="Overview">
               <i class="bi bi-grid-fill"></i>
               <span>Recursos Humanos</span>
             </a>
@@ -139,20 +139,22 @@
     </li>
   </ul>
 </div>
+</div>
+  <a href="{{ route('dashboard') }}"
+         class="btn-quick-action text-decoration-none ms-auto"
+         style="grid-column: 3; justify-self: end;">
+        <i class="bi bi-house-door-fill"></i>
+        <span>Home</span>
+      </a>
+    </header>
     </header>
     <!-- END: Top Navbar Component -->
 
     <!-- START: Page Header Banner -->
-    <div class="page-header">
-      <div>
-        
-      </div>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb mb-0">
-          <li class="breadcrumb-item"><a href="{{ url ('dashboard') }}" class="text-decoration-none text-muted-green">Home</a></li>
-        </ol>
-      </nav>
-    </div>
+  
+
+
+
     <!-- END: Page Header Banner -->
     <div class="container-fluid px-0">
       @yield('content')
@@ -172,7 +174,7 @@
         <ul class="footer-links">
           <li><a href="{{ route('dashboard') }}" class="footer-link">Inicio</a></li>
           <li><a href="{{ route('insumos.index') }}" class="footer-link">Insumos</a></li>
-          <li><a href="{{ route('recursoshumanos') }}" class="footer-link">RRHH</a></li>
+          <li><a href="{{ route('recursoshumanos.index') }}" class="footer-link">RRHH</a></li>
           <li><a href="{{ route('proveedores.index') }}" class="footer-link">Proveedores</a></li>
         </ul>
       </div>

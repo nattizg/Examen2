@@ -3,13 +3,14 @@ use App\Http\Controllers\InsumoController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\EmpleadoController;
 
 Route::get('/', function () {
     return view('layouts.app');
 });
 
 Route::get('/dashboard', function () {
-    return view('layouts.app');
+    return view('inicio.dashboard');
 })->middleware('auth')->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
@@ -23,9 +24,10 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('recursoshumanos', EmpleadoController::class);
+    Route::resource('recursoshumanos', EmpleadoController::class)
+        ->parameters(['recursoshumanos' => 'empleado'])
+        ->except('show');
 });
-
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 

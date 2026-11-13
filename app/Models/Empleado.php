@@ -12,7 +12,7 @@ class Empleado extends Model
         'apellido', 
         'correo', 
         'cargo', 
-        'salrio',
+        'salario',
         'fecha_ingreso', 
         'estado', 
     ];
